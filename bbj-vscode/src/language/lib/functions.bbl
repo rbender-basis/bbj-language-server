@@ -3,948 +3,1700 @@ library
 
 /@@
 
-AND(left:string, right:string, ERR:?lineref)
+NULL()
+
 
 #### Syntax
-\`ASC(string{,ERR:lineref})\`
+\`NULL()\`
 
 #### Description
-
-The **ASC()** function returns the ASCII numeric value of the first character in a string.
-@/
-ASC(param:string, ERR?:lineref): int
-
-/@@
-\`CHR(int{,ERR:lineref})\`
-
-The CHR() function returns the ASCII value of an integer.
-@/
-CHR(param:int, ERR?:lineref): string
-
-/@@
 The NULL() function returns a Java null value. It is typically used to check for a null value returned from a Java function.
+
+Documentation: https://documentation.basis.cloud/BASISHelp/WebHelp/commands2/null_function_return_java_null_value.htm
 @/
-NULL():string
+NULL(): any
+
 
 /@@
-\`STR(objexpr{:mask}{,ERR:lineref})\`
- 
-In BBj, the STR() function accepts arguments of any type. If the argument evaluates to a number, STR(num) is used, otherwise STR(str) is used.
-BBj STR() function supports the 'U' mask character.
-@/
-STR(objexpr:string, ERR?:lineref): string
 
-/@@
-\`ABS(num{, ERR:lineref})\`
+ABS(num,ERR=lineref)
 
+
+#### Syntax
+\`ABS(num,ERR=lineref)\`
+
+#### Description
 The ABS() function returns the absolute value of its numeric argument.
+
+Documentation: https://documentation.basis.cloud/BASISHelp/WebHelp/commands/abs_function.htm
 @/
-ABS(param:num, ERR?:lineref): num
+ABS(num,ERR:lineref): any
+
 
 /@@
-\`ADJN(val{, ERR:lineref})\`
 
-The ADJN() function returns an 8-byte binary string suitable for string comparisons of numeric values.
+ADJN(val,ERR=lineref)
+
+
+#### Syntax
+\`ADJN(val,ERR=lineref)\`
+
+#### Description
+The ADJN() function returns an 8-byte binary string suitable for string comparisons of numeric values. It may be used in two ways:
+
+Documentation: https://documentation.basis.cloud/BASISHelp/WebHelp/commands/adjn_function.htm
 @/
-ADJN():string
+ADJN(val,ERR:lineref): any
+
 
 /@@
-\`ATH(string{, ERR: lineref})\`
 
+AND(string,string,ERR=lineref)
+
+
+#### Syntax
+\`AND(string,string,ERR=lineref)\`
+
+#### Description
+The AND() function joins two or more expressions and returns the result. Both arguments must be the same length.
+
+The rules for AND() are:
+
+Documentation: https://documentation.basis.cloud/BASISHelp/WebHelp/commands/and_function.htm
+@/
+AND(string,string,ERR:lineref): any
+
+
+/@@
+
+ARGV(int,ERR=lineref)
+
+
+#### Syntax
+\`ARGV(int,ERR=lineref)\`
+
+#### Description
+The ARGV() function returns the arguments passed to PRO/5 when invoked. ARGC returns the number of arguments passed on the command line. ARGV(0) always returns the fully qualified name of the PRO/5 executable. User-defined arguments are returned in ARGV(1), ARGV(2), etc., up to ARGV(ARGC-1). If there are no user-defined arguments, then ARGC is 1.
+
+Documentation: https://documentation.basis.cloud/BASISHelp/WebHelp/commands/argv_function.htm
+@/
+ARGV(int,ERR:lineref): any
+
+
+/@@
+
+ASC(string,ERR=lineref)
+
+
+#### Syntax
+\`ASC(string,ERR=lineref)\`
+
+#### Description
+The ASC() function returns the ASCII numeric value of the first character in a string.The following statement assigns the ASCII value of the first character in CHR$ to the numeric variable VALUE.
+
+Documentation: https://documentation.basis.cloud/BASISHelp/WebHelp/commands/asc_function.htm
+@/
+ASC(string,ERR:lineref): any
+
+
+/@@
+
+ATH(string,ERR=lineref)
+
+
+#### Syntax
+\`ATH(string,ERR=lineref)\`
+
+#### Description
 The ATH() function converts a human-readable hexadecimal string to the internal form.
+
+Documentation: https://documentation.basis.cloud/BASISHelp/WebHelp/commands/ath_function.htm
 @/
-ATH(param:string, ERR?:lineref): string
+ATH(string,ERR:lineref): any
+
 
 /@@
-\`ATN(num{, precis}{, ERR:lineref})\`
 
+ATN(num,precis,ERR=lineref)
+
+
+#### Syntax
+\`ATN(num,precis,ERR=lineref)\`
+
+#### Description
 The ATN() function returns the arctangent of num. The result is in radians and is in the range -pi/2 to pi/2.
+
+Documentation: https://documentation.basis.cloud/BASISHelp/WebHelp/commands/atn_function.htm
 @/
-ATN(param:num, param: num, ERR?:lineref): num
+ATN(num,precis,ERR:lineref): any
+
 
 /@@
-\`BIN(intA, intB{, ERR:lineref})\`
+
+BIN(intA,intB,ERR=lineref)
+
+
+#### Syntax
+\`BIN(intA,intB,ERR=lineref)\`
+
+#### Description
+For BBj-specific information, see the BBj BIN() Function.
 
 The BIN() function converts a decimal into a binary string.
+
+Documentation: https://documentation.basis.cloud/BASISHelp/WebHelp/commands/bin_function.htm
 @/
-BIN(param:int, param: int, ERR?:lineref): string
+BIN(intA,intB,ERR:lineref): any
+
 
 /@@
-\`BSZ(int{, ERR:lineref})\`
 
-The BSZ() function() prevents an ERROR message from being issued and always returns a 0
+BSZ(int,ERR=lineref)
+
+
+#### Syntax
+\`BSZ(int,ERR=lineref)\`
+
+#### Description
+The BSZ() function() prevents an ERROR message from being issued and always returns a 0,. It is included for syntax compatibility with older versions of Business BASIC only. int must be in the range of 0 to 15.
+
+Documentation: https://documentation.basis.cloud/BASISHelp/WebHelp/commands/bsz_function.htm
 @/
-BSZ(param: int, ERR?:lineref): int
+BSZ(int,ERR:lineref): any
+
 
 /@@
-\`CAST(type, object{, ERR:lineref})\`
 
-In BBj 6.0 and higher, the CAST() function takes a type name and an object and returns an object of the provided type.
+CHANOPT(channelno,ERR=lineref)
+
+
+#### Syntax
+\`CHANOPT(channelno,ERR=lineref)\`
+
+#### Description
+The CHANOPT() function returns the current settings (general or specific information about the file or device) that are accessible using the CHANOPT verb for the specified channel.
+
+Documentation: https://documentation.basis.cloud/BASISHelp/WebHelp/commands/chanopt_function.htm
 @/
-CAST(param:object, param: object, ERR?:lineref): object
+CHANOPT(channelno,ERR:lineref): any
+
 
 /@@
-\`CHANOPT(channelno{, ERR:lineref})\`
 
-The CHANOPT() function returns the current settings that are accessible using the CHANOPT verb for the specified channel.
+CHR(int,ERR=lineref)
+
+
+#### Syntax
+\`CHR(int,ERR=lineref)\`
+
+#### Description
+The CHR() function returns the ASCII value of an integer.
+
+Documentation: https://documentation.basis.cloud/BASISHelp/WebHelp/commands/chr_function.htm
 @/
-CHANOPT(param:int, ERR?:lineref): object
+CHR(int,ERR:lineref): any
+
 
 /@@
-\`CLIENTENV(str{,IND=int}{,ERR:lineref})\`
 
-In BBj 4.0 and higher, the CLIENTENV() function returns the value of a specified operating system environment variable from the client side of a thin client session.
+CLIPISFORMAT (fmt[,ERR=lineref])
+
+
+#### Syntax
+\`CLIPISFORMAT (fmt[,ERR=lineref])\`
+
+#### Description
+For BBj-specific information, see the Clipboard Verbs and Functions.
+
+The CLIPISFORMAT() function checks the availability of clipboard formats for data to be copied to the application. A non-zero value indicates that the format is available and can be retrieved by the application. Clipboard formats between 1 and 1023 are reserved by Windows. Clipboard format 1 is the identifying format for plain text. Clipboard format 8 is the identifying format for bitmaps and should be copied or pasted to a file with CLIPFROMFILE and CLIPTOFILE.
+&#160;
+
+Documentation: https://documentation.basis.cloud/BASISHelp/WebHelp/commands/clipisformat_function.htm
 @/
-CLIENTENV(param: string, param: int, ERR?:lineref): int
+CLIPISFORMAT (fmt,ERR:lineref): any
+
 
 /@@
-\`CLIPISFORMAT({fmt[, ERR=lineref]})\`
 
-The CLIPISFORMAT() function checks the availability of clipboard formats for data to be copied to the application.
+CLIPREGFORMAT (name[,ERR=lineref])
+
+
+#### Syntax
+\`CLIPREGFORMAT (name[,ERR=lineref])\`
+
+#### Description
+For BBj-specific information, see the Clipboard Verbs and Functions.
+
+The CLIPREGFORMAT() function is used to register clipboard formats, which must be defined before data can be placed on the clipboard. To Windows, the string is case-insensitive. Therefore, "MY FORMAT" cannot be used, if an existing format were named "my format." The return value is a unique number used to define the format of data to be placed on the clipboard. If the format has already been registered, its existing format number is returned. Unlike other clipboard functions and verbs, the clipboard does not need to be locked before using CLIPREGFORMAT().
+
+Documentation: https://documentation.basis.cloud/BASISHelp/WebHelp/commands/clipregformat_function.htm
 @/
-CLIPISFORMAT(param: int, ERR?:lineref): int
+CLIPREGFORMAT (name,ERR:lineref): any
+
 
 /@@
-\`CLIPREGFORMAT(name$[, ERR:lineref])\`
 
-The CLIPREGFORMAT() function is used to register clipboard formats, which must be defined before data can be placed on the clipboard.
+CLIPTOSTR (fmt[,ERR=lineref])
+
+
+#### Syntax
+\`CLIPTOSTR (fmt[,ERR=lineref])\`
+
+#### Description
+For BBj-specific information, see the Clipboard Verbs and Functions.
+
+The CLIPTOSTR() function returns a string in an fmt-parameter-specified clipboard format that can be processed by the application. If fmt is 1, the returned string is probably ASCII text. Any other specified format must be matched against the application's ability to process it. For formats 1 (text) and 7 (OEM text), the null terminator is removed before the string is returned. If the requested format is unavailable, an !ERROR=92 is generated. In this case, the error code returned by windows and placed in TCB(10) is unreliable; Visual PRO/5 often sets TCB(10) to 93 to indicate that although windows did not return an error code, the operation failed.
+
+Documentation: https://documentation.basis.cloud/BASISHelp/WebHelp/commands/cliptostr_function.htm
 @/
-CLIPREGFORMAT(param: string, ERR?:lineref): int
+CLIPTOSTR (fmt,ERR:lineref): any
+
 
 /@@
-\`CLIPTOSTR(fmt[,ERR:lineref])\`
 
-The CLIPTOSTR() function returns a string in an fmt-parameter-specified clipboard format that can be processed by the application.
-@/
-CLIPTOSTR(param: int, ERR?:lineref): string
+COS(num,precis,ERR=lineref)
 
-/@@
-\`COS(num{,precis{,ERR:lineref}})\`
 
+#### Syntax
+\`COS(num,precis,ERR=lineref)\`
+
+#### Description
 The COS() function returns the cosine of the specified value. The result will be in the range -1 to 1.
+
+Documentation: https://documentation.basis.cloud/BASISHelp/WebHelp/commands/cos_function.htm
 @/
-COS(param: num, param: int, ERR?:lineref): num
+COS(num,precis,ERR:lineref): any
+
 
 /@@
-\`CPL(stringA{,stringB{,ERR:lineref}})\`
 
-The CPL() function returns a string containing the internal compiled format of the supplied command line.
+CPL(stringA,stringB,ERR=lineref)
+
+
+#### Syntax
+\`CPL(stringA,stringB,ERR=lineref)\`
+
+#### Description
+For BBj-specific information, see the CPL() Function - BBj.
+
+Documentation: https://documentation.basis.cloud/BASISHelp/WebHelp/commands/cpl_function.htm
 @/
-CPL(param: string, param: string, ERR?:lineref): string
+CPL(stringA,stringB,ERR:lineref): any
+
 
 /@@
-\`CRC(stringA{,stringB}{,ERR=lineref})\`
 
-The CRC() function returns a 2-byte string containing a special checksum of stringA. If stringB is given, it must be 2 bytes long and provide a "seed" for the checksum
+CRC(stringA,stringB,ERR=lineref)
+
+
+#### Syntax
+\`CRC(stringA,stringB,ERR=lineref)\`
+
+#### Description
+The CRC() function returns a 2-byte string containing a special checksum of stringA. If stringB is given, it must be 2 bytes long and provide a "seed" for the checksum. Otherwise, PRO/5 uses a seed of $0000$. CRC() can be used for verifying data transmissions over communication lines.
+
+Taking the CRC() of a long string that may not fit in memory can be done one piece at a time because CRC(A$+B$) = CRC(B$,CRC(A$)).
+
+CRC algorithm:
+
+Documentation: https://documentation.basis.cloud/BASISHelp/WebHelp/commands/crc_function.htm
 @/
-CRC(param: string, param: string, ERR?:lineref): string
+CRC(stringA,stringB,ERR:lineref): any
+
 
 /@@
-\`CRC16(str,seed{,ERR=lineref})\`
 
-The CRC16() function implements the CCITT CRC-16 function. See the CRC() function for additional information.
-@/
-CRC16(param: string, param: string, ERR?:lineref): string
+CTRL(chan,control_id,function,context_id,ERR=lineref)
 
-/@@
-\`CTRL(chan{,control_id{,function{,context_id}}}{,ERR=lineref})\`
+
+#### Syntax
+\`CTRL(chan,control_id,function,context_id,ERR=lineref)\`
+
+#### Description
+For BBj-specific information, see the CTRL() Function - BBj.
 
 The CTRL() function reports on the status of selected items on a GUI device and returns a string value.
+
+Documentation: https://documentation.basis.cloud/BASISHelp/WebHelp/commands/ctrl_function.htm
 @/
-CTRL(param: int, param: int, param: int, param: int, ERR?:lineref): string
+CTRL(chan,control_id,function,context_id,ERR:lineref): any
+
 
 /@@
-\`CVS(string,int{,ERR=lineref})\`
 
-The CVS() function modifies a given string by the value of int from the table below:
-0-Do nothing
-1-Strip leading spaces
-2-Strip traling spaces
-4-Convert characters to uppercase
-8-Convert characters to lowercase
-16-Convert nonprintable characters to spaces
-32-Replace multiple spaces with a single space
-64-Repace "," and "." characters with values as specified in OPTS(see SETOPTS)
+CVS(string,int,ERR=lineref)
+
+
+#### Syntax
+\`CVS(string,int,ERR=lineref)\`
+
+#### Description
+For BBj-specific information, see the CVS() Function - BBj.
+
+The <span class="Inline_Code">CVS()</span> function modifies a given string by the value of int from the table below:
+
+Documentation: https://documentation.basis.cloud/BASISHelp/WebHelp/commands/cvs_function.htm
 @/
-CVS(param: string, param: int, ERR?:lineref): string
+CVS(string,int,ERR:lineref): any
+
 
 /@@
-\`CVT(unit_value,conversion_type{,ERR=lineref})\`
 
-The CVT() function converts units between pixel, character, and semicharacter formats.
+CVT(unit_value,conversion_type,ERR=lineref)
+
+
+#### Syntax
+\`CVT(unit_value,conversion_type,ERR=lineref)\`
+
+#### Description
+For BBj-specific information, see CVT() Function - BBj.The following example converts horizontal pixels to horizontal semicharacters and vertical pixels to vertical semicharacters:
+
+Documentation: https://documentation.basis.cloud/BASISHelp/WebHelp/commands/cvt_function.htm
 @/
-CVT(param: int, param: int, ERR?:lineref): char
+CVT(unit_value,conversion_type,ERR:lineref): any
+
 
 /@@
-\`DATE(num1{,num2}{:str}{,ERR=lineref})\`
+
+DATE(num1,num2:str,ERR=lineref)
+
+
+#### Syntax
+\`DATE(num1,num2:str,ERR=lineref)\`
+
+#### Description
+For BBj-specific information, see the DATE() Function - BBj.
 
 The DATE() function takes a Julian date and the optional time-of-day and formats it into a more familiar calendar date and time string.
+
+Documentation: https://documentation.basis.cloud/BASISHelp/WebHelp/commands/date_function.htm
 @/
-DATE(param: num, param: num, param: string): string
+DATE(num1,num2:str,ERR:lineref): any
+
 
 /@@
-\`DEC(string{,ERR=lineref})\`
 
+DEC(string,ERR=lineref)
+
+
+#### Syntax
+\`DEC(string,ERR=lineref)\`
+
+#### Description
 The DEC() function converts a binary string argument into a numeric value. The string argument is treated as a signed binary integer.
+
+Documentation: https://documentation.basis.cloud/BASISHelp/WebHelp/commands/dec_function.htm
 @/
-DEC(param: string, ERR?:lineref): num
+DEC(string,ERR:lineref): any
+
 
 /@@
-\`DECRYPT(string{,password}{,MODE=string}{,ERR=lineref})\`
 
-In PRO/5 5.0 and BBj 4.0 and higher, DECRYPT() decrypts the specified string that was encrypted with ENCRYPT(). 
-Attempting to decrypt with the wrong key or algorithm will usually cause meaningless data to be returned
+DIMS(arrayname,ERR=lineref)
+
+
+#### Syntax
+\`DIMS(arrayname,ERR=lineref)\`
+
+#### Description
+For BBj-specific information, see the DIMS() Function - BBj.
+
+The DIMS() function returns the dimensions of an array. The 25-character string that is returned may be addressed using the following template:
+
+Documentation: https://documentation.basis.cloud/BASISHelp/WebHelp/commands/dims_function.htm
 @/
-DECRYPT(param: string, param: param, ERR?:lineref): string
+DIMS(arrayname,ERR:lineref): any
+
 
 /@@
-\`DIMS(arrayname{,ERR=lineref})\`
 
-The DIMS() function returns the dimensions of an array.
-@/
-DIMS(param: string, ERR?:lineref): string
+DIR(disk,ERR=lineref)
 
-/@@
-\`DIR(disk{,ERR=lineref})\`
 
+#### Syntax
+\`DIR(disk,ERR=lineref)\`
+
+#### Description
 The DIR() function returns the default directory for the specified disk.
+
+Documentation: https://documentation.basis.cloud/BASISHelp/WebHelp/commands/dir_function.htm
 @/
-DIR(param: string, ERR?:lineref): string
+DIR(disk,ERR:lineref): any
+
 
 /@@
-\`DSK(disk{,ERR=lineref})\`
 
+DSK(disk,ERR=lineref)
+
+
+#### Syntax
+\`DSK(disk,ERR=lineref)\`
+
+#### Description
 The DSK() function determines the current default disk drive as well as which drives are configured.
+
+Documentation: https://documentation.basis.cloud/BASISHelp/WebHelp/commands/dsk_function.htm
 @/
-DSK(param: string, ERR?:lineref): string
+DSK(disk,ERR:lineref): any
+
 
 /@@
-\`ENCRYPT(string{,password}(,MODE=string){,ERR=lineref})\`
 
-In PRO/5 5.0 and BBj 4.0 and higher, the ENCRYPT() encrypts the specified string and returns an encrypted string. 
-Note that the encrypted string may be longer than the specified string.
-@/
-ENCRYPT(param: string, param: string, ERR?:lineref): string
+EPT(num,ERR=lineref)
 
-/@@
-\`ENV(str{,IND=int}{,ERR=lineref})\`
 
-In BBj 4.0 and higher, the ENV() function returns the value of a specified operating system environment variable
-@/
-ENV(param: string, param: int, ERR?:lineref): string
+#### Syntax
+\`EPT(num,ERR=lineref)\`
 
-/@@
-\`EPT(num{,ERR=lineref})\`
-
+#### Description
 The EPT() function returns the order of magnitude of num (the exponent of 10).
+
+Documentation: https://documentation.basis.cloud/BASISHelp/WebHelp/commands/ept_function.htm
 @/
-EPT(param: num, ERR?:lineref): num
+EPT(num,ERR:lineref): any
+
 
 /@@
-\`ERR(int{,int...})\`
 
-The ERR() function does one of the following:
-1-Returns the most recent error value as an integer in the 0 to 255 range.
-2-Uses an argument list to return a position with the same value as the error value.
+ERRMES(int,str,ERR=lineref)
+
+
+#### Syntax
+\`ERRMES(int,str,ERR=lineref)\`
+
+#### Description
+For BBj-specific information, see the ERRMES() Function - BBj.
+
+The ERRMES() function returns the error message associated with a given error code provided by the int parameter. The str parameter replaces the existing error message for the specified error number.
+
+Documentation: https://documentation.basis.cloud/BASISHelp/WebHelp/commands/errmes_function.htm
 @/
-ERR(param: int): int
+ERRMES(int,str,ERR:lineref): any
+
 
 /@@
-\`ERRMES(int{,str}{,ERR=lineref})\`
 
-The ERRMES() function returns the error message associated with a given error code provided by the int parameter.
+FATTR(string,ERR=lineref)
+
+
+#### Syntax
+\`FATTR(string,ERR=lineref)\`
+
+#### Description
+The FATTR() function returns information about the specified string template. For additional information on string templates, see the String Template in the User's Reference Guide.A$ is a templated string and the following is its template definition:The FATTR() function can be used to determine the attributes for each field in a template. The attributes are returned in a string with the following format:
+
+Documentation: https://documentation.basis.cloud/BASISHelp/WebHelp/commands/fattr_function.htm
 @/
-ERRMES(param: int, param: string, ERR?:lineref): string
+FATTR(string,ERR:lineref): any
+
 
 /@@
-\`
-(1)FATTR(string{,ERR=lineref})
-(2)FATTR(string,""{,ERR=lineref})
-   FATTR(string,"",""{,ERR=lineref})
-(3)FATTR(string,field_name,attribute_name{,ERR=lineref})
-(4)FATTR(string,field_name{,ERR=lineref})
-   FATTR(string,field_name,""{,ERR=lineref})
-\`
 
-(1)-Returns a string template definition.
-(2)-Returns the names of fields contained in the defined string template. Each field name is delimited with a line-feed character ($0A$), including a line-feed character at the end of the string.
-(3)-Returns the value of a user-defined attribute of a specified field name in the defined string template.
-(4)-Returns encoded information about a specified field in the defined string template.
+FBIN(numeric,ERR=lineref)
+
+
+#### Syntax
+\`FBIN(numeric,ERR=lineref)\`
+
+#### Description
+For BBj-specific information, see the FBIN() Function - BBj.
+
+The FBIN() function returns an 8-byte string containing the equivalent of the numeric argument in IEEE standard, 64-bit, floating point format. This function is for outputting numeric information that may be read by other software packages, such as spreadsheet software.
+
+Documentation: https://documentation.basis.cloud/BASISHelp/WebHelp/commands/fbin_function.htm
 @/
-FATTR(param: string, param: string, param: string, ERR?:lineref): string
+FBIN(numeric,ERR:lineref): any
+
 
 /@@
-\`FBIN(numeric{,ERR=lineref})\`
 
-The FBIN() function returns an 8-byte string containing the equivalent of the numeric argument in IEEE standard, 64-bit, floating point format.
-@/
-FBIN(param: num, ERR?:lineref): string
+FDEC(string,ERR=lineref)
 
-/@@
-\`FDEC(string{,ERR=lineref})\`
+
+#### Syntax
+\`FDEC(string,ERR=lineref)\`
+
+#### Description
+For BBj-specific information, see the FDEC() Function - BBj.
 
 The FDEC() function accepts an 8-byte floating point format and returns its decimal numeric equivalent.
+
+Documentation: https://documentation.basis.cloud/BASISHelp/WebHelp/commands/fdec_function.htm
 @/
-FDEC(param: string, ERR?:lineref): num
+FDEC(string,ERR:lineref): any
+
 
 /@@
-\`FID(channelno{,ERR=lineref})\`
 
-The FID() function returns a string describing the attributes of the file currently OPENed on channelno. 
-If channelno was OPENed with an alias and resulted in opening a PRO/5 device, FID() returns only the alias name and may be a string from one to six characters long.
+FID(channelno,ERR=lineref)
+
+
+#### Syntax
+\`FID(channelno,ERR=lineref)\`
+
+#### Description
+For BBj-specific information, see FID() Function - BBj.
+
+See also XFID() Function - Get File Identification.
+
+The FID() function returns a string describing the attributes of the file currently OPENed on channelno. If channelno was OPENed with an alias and resulted in opening a PRO/5 device, FID() returns only the alias name and may be a string from one to six characters long.
+
+Channel zero refers to the terminal device. Normally, the value returned by FID (0) is the terminal alias (T0, T1, etc.). However, if PRO/5 is running in background or with redirected standard I/O, the file name associated with channel 0 will be <font style="font-weight: bold;">IO, which has no special capabilities other than to read and write data.
+
+If the channel was opened without an alias, then FID() returns a string with the following information:
+
+Documentation: https://documentation.basis.cloud/BASISHelp/WebHelp/commands/fid_function.htm
 @/
-FID(param: int, ERR?:lineref): string
+FID(channelno,ERR:lineref): any
+
 
 /@@
-\`
-FIELD(strname,str{,int}{,ERR=lineref})
-NFIELD(strname,str{,int}{,ERR=lineref})
-FIELD(strname{,ERR=lineref})
-\`
 
-The FIELD() and NFIELD() functions allow access to data stored in a string template. To access character (string) data, use FIELD(). To access numeric data, use NFIELD().
-@/
-FIELD(param: string, param: string, param: int, ERR?:lineref): string
+FILEOPT(str,ERR=lineref)
 
-/@@
-\`FILEOPEN(prompt,path,name,ext[,filters[,mode[,MODE="CLIENT,EXISTS=option,RESOLVE=option,STYLE=name"]]])\`
 
-The FILEOPEN function activates the standard File Open dialog.
-@/
-FILEOPEN(prompt: string, path: string, name: string, ext: string, filters?: string, mode?: int, MODE?!: string): string 
+#### Syntax
+\`FILEOPT(str,ERR=lineref)\`
 
-/@@
-\`FILEOPT(str{,ERR=lineref})\`
-
+#### Description
 The FILEOPT() function returns the settings given in the FILEOPT verb.
+
+Documentation: https://documentation.basis.cloud/BASISHelp/WebHelp/commands/fileopt_function.htm
 @/
-FILEOPT(param: string, ERR?:lineref): string
+FILEOPT(str,ERR:lineref): any
+
 
 /@@
-\`FILESAVE(prompt,path,name,ext[,filters[,mode[,MODE="CLIENT,STYLE=name,EXISTS=option"]]])\`
 
-The FILESAVE function activates the standard File Save dialog.
-@/
-FILESAVE(prompt: string, path: string, name: string, ext: string, filters?: string, mode?: int, MODE?!: string): string
+FILL(int,string,ERR=lineref)
 
-/@@
-\`FILL(int{,string}{,ERR=lineref})\`
 
+#### Syntax
+\`FILL(int,string,ERR=lineref)\`
+
+#### Description
 The FILL() function generates repeating strings on the fly without the need for a DIM statement.
+
+Documentation: https://documentation.basis.cloud/BASISHelp/WebHelp/commands/fill_function.htm
 @/
-FILL(param: int, param: string, ERR?:lineref): string
+FILL(int,string,ERR:lineref): any
+
 
 /@@
-\`FIN(channelno{,ERR=lineref})\`
 
-The FIN() function returns file information associated with specified channel and the current status and system-specific information.
+FIN(channelno,ERR=lineref)
+
+
+#### Syntax
+\`FIN(channelno,ERR=lineref)\`
+
+#### Description
+For BBj-specific information, see FIN() Function - BBj.The FIN() data for nondevices always contains 64 bytes of reserved space, including the following information:The FIN for C-ISAM files is identical to the FIN for MKEYED files, with the following exceptions:The FIN for a printer or terminal contains the following information:The FIN() of a plot device contains the following information:With a SYSGUI channel and an IND=0 (or without specifying any IND= parameter), the FIN() function returns the information below. The template can be obtained with TMPL(chan,IND=0) on the same channel. With the TMPL() function, the IND=0 parameter is required to get a template for the FIN(). Otherwise, a template for the record data (SYSGUI event structure) is returned. Returned templates start at position 65.When the FIN() function is used on a channel that is opened to a SYSWINDOW device (such as the graphical console terminal window), it can be invoked with an IND= parameter to retrieve special information about the terminal window.
+
+Documentation: https://documentation.basis.cloud/BASISHelp/WebHelp/commands/fin_function.htm
 @/
-FIN(param: int, ERR?:lineref): int
+FIN(channelno,ERR:lineref): any
+
 
 /@@
-\`
+
 FNnumname(expr,...)
-FNstrname(expr,...)
-FNobjname(expr,...)
-\`
+
+
+#### Syntax
+\`FNnumname(expr,...)\`
+
+#### Description
+For BBj-specific information, see FNx() Function - BBj.
 
 Used with the DEF verb, the FN() function executes functions defined by the user.
+
+Documentation: https://documentation.basis.cloud/BASISHelp/WebHelp/commands/fnx_function.htm
 @/
-FNnum(param: num): string
-FNstring(param: string): string
-FNobject(param: object): string
+FNnumname(expr): any
+
 
 /@@
-\`FPT(num{,ERR=lineref})\`
 
+FPT(num,ERR=lineref)
+
+
+#### Syntax
+\`FPT(num,ERR=lineref)\`
+
+#### Description
 The FPT() function returns the fractional part of the numeric expression. The result has the same sign as the argument.
+
+Documentation: https://documentation.basis.cloud/BASISHelp/WebHelp/commands/fpt_function.htm
 @/
-FPT(param: num, ERR?:lineref): num
+FPT(num,ERR:lineref): any
+
 
 /@@
-\`GAP(string{,ERR=lineref})\`
 
-The GAP() function returns its string argument with each byte in odd parity by complementing the high-order bit of any byte containing an even number of 1 bits.
+GAP(string,ERR=lineref)
+
+
+#### Syntax
+\`GAP(string,ERR=lineref)\`
+
+#### Description
+The GAP() function returns its string argument with each byte in odd parity by complementing the high-order bit of any byte containing an even number of 1 bits. Note that even parity may be generated using:
+
+Documentation: https://documentation.basis.cloud/BASISHelp/WebHelp/commands/gap_function.htm
 @/
-GAP(param: string, ERR?:lineref): string
+GAP(string,ERR:lineref): any
+
 
 /@@
-\`HSA(disk{,ERR=lineref})\`
 
+HSA(disk,ERR=lineref)
+
+
+#### Syntax
+\`HSA(disk,ERR=lineref)\`
+
+#### Description
 The HSA() function returns an integer that identifies the highest sector addressable for a disk.
+
+Documentation: https://documentation.basis.cloud/BASISHelp/WebHelp/commands/hsa_function.htm
 @/
-HSA(param: string, ERR?:lineref): int
+HSA(disk,ERR:lineref): any
+
 
 /@@
-\`HSH(stringA{,stringB}{,ERR=lineref})\`
 
+HSH(stringA,stringB,ERR=lineref)
+
+
+#### Syntax
+\`HSH(stringA,stringB,ERR=lineref)\`
+
+#### Description
 The HSH() function is similar to the CRC() function, except with a different algorithm (see the CRC() function).
+
+HSH algorithm:
+
+Documentation: https://documentation.basis.cloud/BASISHelp/WebHelp/commands/hsh_function.htm
 @/
-HSH(param: string, param: string, ERR?:lineref): string
+HSH(stringA,stringB,ERR:lineref): any
+
 
 /@@
-\`HTA(string{,ERR=lineref})\`
 
+HTA(string,ERR=lineref)
+
+
+#### Syntax
+\`HTA(string,ERR=lineref)\`
+
+#### Description
 The HTA() function converts a hexadecimal string to a human-readable ASCII string. The result is always twice the length of the argument.
+
+Documentation: https://documentation.basis.cloud/BASISHelp/WebHelp/commands/hta_function.htm
 @/
-HTA(param: string, ERR?:lineref): string
+HTA(string,ERR:lineref): any
+
 
 /@@
-\`IFF(num_expr,true_expr,false_expr)\`
 
-The IFF() function tests a specified numeric expression and returns one of two things, based on whether the expression evaluates as true (non-zero) or false (zero).
+IND(channelno,ERR=lineref,END=lineref)
+
+
+#### Syntax
+\`IND(channelno,ERR=lineref,END=lineref)\`
+
+#### Description
+The IND() function returns the pointer of the current record on channelno. For TCP/IP or UDP socket connections, it returns the socket number.
+
+If the file pointer is at the end of the file, an !ERROR=2 is generated. Some file types do not return anything as the index.
+
+Documentation: https://documentation.basis.cloud/BASISHelp/WebHelp/commands/ind_function.htm
 @/
-IFF(param: num, param: any, param: any): any
+IND(channelno,ERR:lineref,END:lineref): any
+
 
 /@@
-\`IND(channelno{,ERR=lineref}{,END=lineref})\`
 
-The IND() function returns the pointer of the current record on channelno.
-@/
-IND(param: int, ERR?:lineref, END?:lineref): int
+INFO(int,int,ERR=lineref)
 
-/@@
-\`INFO(int,int{,ERR=lineref})\`
+
+#### Syntax
+\`INFO(int,int,ERR=lineref)\`
+
+#### Description
+For BBj-specific information, see the INFO() Function - BBj.
 
 The INFO() function returns system information strings.
+
+Documentation: https://documentation.basis.cloud/BASISHelp/WebHelp/commands/info_function.htm
 @/
-INFO(param: int, param: int, ERR?:lineref): string
+INFO(int,int,ERR:lineref): any
+
 
 /@@
-\`INT(num{,ERR=lineref})\`
 
+INT(num,ERR=lineref)
+
+
+#### Syntax
+\`INT(num,ERR=lineref)\`
+
+#### Description
 The INT() function converts a numeric argument, removing any fractional digits and truncating all digits to the right of the decimal point.
+
+Documentation: https://documentation.basis.cloud/BASISHelp/WebHelp/commands/int_function.htm
 @/
-INT(param: num, ERR?:lineref): int
+INT(num,ERR:lineref): any
+
 
 /@@
-\`IOR(string,string{,ERR=lineref})\`
 
-The IOR() function inclusive ORs the bits of the two string arguments and returns a string. Both string arguments must be the same length.
+IOR(string,string,ERR=lineref)
+
+
+#### Syntax
+\`IOR(string,string,ERR=lineref)\`
+
+#### Description
+The IOR() function inclusive ORs the bits of the two string arguments and returns a string. Both string arguments must be the same length. The following rules describe the IOR() function:
+
+Documentation: https://documentation.basis.cloud/BASISHelp/WebHelp/commands/ior_function.htm
 @/
-IOR(param: string, param: string, ERR?:lineref): string
+IOR(string,string,ERR:lineref): any
+
 
 /@@
-\`JUL(year,month,day{,ERR=lineref})\`
 
-The JUL() function returns the Julian day number for a given date.
+JUL(year,month,day,ERR=lineref)
+
+
+#### Syntax
+\`JUL(year,month,day,ERR=lineref)\`
+
+#### Description
+For BBj-specific information, see JUL() Function - BBj.
+
+Documentation: https://documentation.basis.cloud/BASISHelp/WebHelp/commands/jul_function.htm
 @/
-JUL(param: int, param: int, param: int, ERR?:lineref): int
+JUL(year,month,day,ERR:lineref): any
+
 
 /@@
-\`
-1-KEY(channelno{,ERR=lineref}{,END=lineref}{,IND=index}{,KNUM=int})
-2-KEYF(channelno{,ERR=lineref}{,END=lineref}{,IND=index})
-3-KEYL(channelno{,ERR=lineref}{,END=lineref}{,IND=index})
-4-KEYN(channelno{,ERR=lineref}{,END=lineref}{,IND=index})
-5-KEYP(channelno{,ERR=lineref}{,END=lineref}{,IND=index})
-\`
 
-1-KEY() returns the key at the current file pointer position in the file.
-2-KEYF() returns the first logical, or lowest, key in the file. For TCP/IP and UDP sockets, it returns the port signature "IP;port;hostname"
-3-KEYL() returns the last logical, or greatest, key in the file.
-4-KEYN() returns the key following the current key (next key).
-5-KEYP() returns the key prior to the current key.
-@/
-KEY(param: int, ERR?:lineref, END?:lineref, param: int, param: int): string
-KEYF(param: int, ERR?:lineref, END?:lineref, param: int): string
-KEYL(param: int, ERR?:lineref, END?:lineref, param: int): string
-KEYN(param: int, ERR?:lineref, END?:lineref, param: int): string
-KEYP(param: int, ERR?:lineref, END?:lineref, param: int): string
+KGEN(str1,str2,int,ERR=lineref)
 
-/@@
-\`KEYR(channelno{,ERR=lineref}{,DOM=lineref})\`
 
-In BBj 15.00 and higher, the KEYR() function returns the most recent value passed in a KEY= option for any I/O verb on the specified file channel.
-@/
-KEYR(param: int, ERR?:lineref, DOM?:lineref): string
+#### Syntax
+\`KGEN(str1,str2,int,ERR=lineref)\`
 
-/@@
-\`KGEN(str1,str2,int{,ERR=lineref})\`
-
+#### Description
 The KGEN() function derives the value of a key contained within a record.
+
+Documentation: https://documentation.basis.cloud/BASISHelp/WebHelp/commands/kgen_function.htm
 @/
-KGEN(param: string, param: string, param: int, ERR?:lineref): string
+KGEN(str1,str2,int,ERR:lineref): any
+
 
 /@@
-\`LCHECKOUT(feature,version {,nagOnFailure} {,ERR?=lineref})\`
 
-In PRO/5 Rev. 3.10 and higher, the LCHECKOUT function checks out one license of the specified feature. LCHECKOUT returns an integer handle.
-The version is a string that contains a number that can be less than or equal to the version that is available. 
-An attempt to checkout a license for a version that is greater than the version that is available will fail. 
-In BBj 9.0 and higher, the optional numeric parameter nagOnFailure is available.
-@/
-LCHECKOUT(param: string, param: string, param: int, ERR?:lineref): string
+LEN(string,ERR=lineref)
 
-/@@
-\`LEN(string{,ERR?=lineref})\`
 
+#### Syntax
+\`LEN(string,ERR=lineref)\`
+
+#### Description
 The LEN() function returns the length of string.
+
+Documentation: https://documentation.basis.cloud/BASISHelp/WebHelp/commands/len_function.htm
 @/
-LEN(param: string, ERR?:lineref): int
+LEN(string,ERR:lineref): any
+
 
 /@@
-\`LEVENSHTEIN(str1,str2{,ERR?=lineref})\`
 
-In BBj 18.00 and higher, the LEVENSHTEIN() function returns the Levenshtein distance between two strings.
-@/
-LEVENSHTEIN(param: string, param: string, ERR?:lineref): int
+LOG(num,precis,ERR=lineref)
 
-/@@
-\`LINFO(handle,int,int{,ERR?=lineref})\`
 
-In PRO/5 Rev. 3.10 and higher, the LINFO() function returns license information strings (FLEXlm/FLEXnet Application Licensing) int 
-is an argument used by LINFO() to determine which string is desired.
-@/
-LINFO(param: string, param: int, param: int, ERR?:lineref): string
+#### Syntax
+\`LOG(num,precis,ERR=lineref)\`
 
-/@@
-\`LOG(num{,precis}{,ERR=?lineref})\`
-
+#### Description
 The LOG() function returns the common logarithm (base 10) of its argument.
+
+Documentation: https://documentation.basis.cloud/BASISHelp/WebHelp/commands/log_function.htm
 @/
-LOG(param: num, param: int, ERR?: lineref): void
+LOG(num,precis,ERR:lineref): any
+
 
 /@@
-\`LRC(string{,ERR=lineref})\`
 
-The LRC() function returns a 1-byte string that is the result of exclusive ORing of all the bytes of its argument string. 
+LRC(string,ERR=lineref)
+
+
+#### Syntax
+\`LRC(string,ERR=lineref)\`
+
+#### Description
+The LRC() function returns a 1-byte string that is the result of exclusive ORing of all the bytes of its argument string. See the XOR() function for a description of exclusive OR. A null argument returns a $00$.
+
+Documentation: https://documentation.basis.cloud/BASISHelp/WebHelp/commands/lrc_function.htm
 @/
-LRC(param: string, ERR?:lineref): string
+LRC(string,ERR:lineref): any
+
 
 /@@
-\`LST(stringA{,stringB}{,ERR=lineref})\`
 
-The LST() function returns the listed form of a compiled PRO/5 command line.
-LST() is for utility purposes only and should never be used in application programs.
+LST(stringA,stringB,ERR=lineref)
+
+
+#### Syntax
+\`LST(stringA,stringB,ERR=lineref)\`
+
+#### Description
+For BBj-specific information, see the LST() Function BBj.In the following example, CPL$ is a compiled BASIC statement that is converted into LIST format and placed in TEXT$.
+
+Documentation: https://documentation.basis.cloud/BASISHelp/WebHelp/commands/lst_function.htm
 @/
-LST(param: string, param: string, ERR?:lineref): string
+LST(stringA,stringB,ERR:lineref): any
+
 
 /@@
-\`MASK(str1{,str2}{,ERR=lineref})\`
 
-The MASK() function scans a string for a matching substring. 
+MASK(str1,str2,ERR=lineref)
+
+
+#### Syntax
+\`MASK(str1,str2,ERR=lineref)\`
+
+#### Description
+For BBj-specific information, see the MASK() Function - BBj.
+
+The MASK() function scans a string for a matching substring. This differs from the POS() function because str2 may contain pattern matching specifications similar to the UNIX operating system "grep" command.The following displays all file names matching a particular pattern:
+
+Documentation: https://documentation.basis.cloud/BASISHelp/WebHelp/commands/mask_function.htm
 @/
-MASK(param: string, param: string, ERR?:lineref): int
+MASK(str1,str2,ERR:lineref): any
+
 
 /@@
-\`MAX(num{,num...})\`
 
+MAX(num,num...)
+
+
+#### Syntax
+\`MAX(num,num...)\`
+
+#### Description
 The MAX() function takes any number of numeric arguments and returns the value of the greatest argument.
+
+Documentation: https://documentation.basis.cloud/BASISHelp/WebHelp/commands2/max_function.htm
 @/
-MAX(param: num): num
+MAX(num,num): any
+
 
 /@@
-\`MENUINFO(sysgui,contextid{,ERR=lineref}{,END=lineref})\`
 
+MENUINFO(sysgui,contextid,ERR=lineref,END=lineref)
+
+
+#### Syntax
+\`MENUINFO(sysgui,contextid,ERR=lineref,END=lineref)\`
+
+#### Description
 The MENUINFO() function retrieves a string that contains the structure of a menu.
+
+Documentation: https://documentation.basis.cloud/BASISHelp/WebHelp/commands2/menuinfo_function.htm
 @/
-MENUINFO(param: sysgui, param: int, ERR?:lineref, END?:lineref): string
+MENUINFO(sysgui,contextid,ERR:lineref,END:lineref): any
+
 
 /@@
-\`MIN(num{,num...})\`
 
+MIN(num,num...)
+
+
+#### Syntax
+\`MIN(num,num...)\`
+
+#### Description
 The MIN() function takes any number of numeric arguments and returns the value of the least argument.
+
+Documentation: https://documentation.basis.cloud/BASISHelp/WebHelp/commands2/min_function.htm
 @/
-MIN(param: num): num
+MIN(num,num): any
+
 
 /@@
-\`MOD(numA,numB{,ERR=lineref})\`
 
+MOD(numA,numB,ERR=lineref)
+
+
+#### Syntax
+\`MOD(numA,numB,ERR=lineref)\`
+
+#### Description
 The MOD() function returns the modulo (remainder) result using the following rules:
-1-If numB is 0, numA is returned.
-2-If numB is not 0, numA - numB*floor(numA/numB) is returned, where floor returns the largest integer less than or equal to its argument.
+
+Documentation: https://documentation.basis.cloud/BASISHelp/WebHelp/commands2/mod_function.htm
 @/
-MOD(param: num, param: num, ERR?:lineref) : num
+MOD(numA,numB,ERR:lineref): any
+
 
 /@@
-\`MSGBOX(str1{,expr{,str2{,button1{,button2{,button3}}}}}{,MODE="options"}{,TIM=int}{,ERR=lineref})\`
 
-The MSGBOX() function creates a message dialog box and returns a value that identifies the user-selected button.
+MSGBOX(str1,expr,str2,ERR=lineref)
+
+
+#### Syntax
+\`MSGBOX(str1,expr,str2,ERR=lineref)\`
+
+#### Description
+For BBj-specific information, see the MSGBOX() Function - BBj.
+
+The MSGBOX() function creates a message dialog box and returns a value that identifies the user-selected button.The value returned by MSGBOX() identifies which button the user selects, as follows:
+
+Documentation: https://documentation.basis.cloud/BASISHelp/WebHelp/commands2/msgbox_function.htm
 @/
-MSGBOX(str1: string, expr?: number, str2?: string, button1?: string, button2?: string, button3?: string, MODE?!: string, TIM?!: number, ERR?!: lineref): string
+MSGBOX(str1,expr,str2,ERR:lineref): any
+
 
 /@@
-\`NEVAL(str{,ERR=lineref})\`
 
-The NEVAL() function is intended to replace the use of EXECUTE for the purpose of evaluating numeric expressions in public programs.
+NEVAL(str,ERR=lineref)
+
+
+#### Syntax
+\`NEVAL(str,ERR=lineref)\`
+
+#### Description
+For BBj-specific information, see the NEVAL() Function - BBj.
+
+Documentation: https://documentation.basis.cloud/BASISHelp/WebHelp/commands2/neval_function.htm
 @/
-NEVAL(param: string, ERR?:lineref): num
+NEVAL(str,ERR:lineref): any
+
 
 /@@
-\`NOT(string{,ERR=lineref})\`
 
+NOT(string,ERR=lineref)
+
+
+#### Syntax
+\`NOT(string,ERR=lineref)\`
+
+#### Description
 The NOT() function toggles the bits of its string argument and returns the result.
+
+Documentation: https://documentation.basis.cloud/BASISHelp/WebHelp/commands2/not_function.htm
 @/
-NOT(param: string, ERR?:lineref): string
+NOT(string,ERR:lineref): any
+
 
 /@@
-\`NOTICE(sysgui,nfyid{,ERR=lineref})\`
 
-The NOTICE() function uses the passed Notify ID and retrieves the Notice string from the SYSGUI channel.
+NOTICE(sysgui,nfyid,ERR=lineref)
+
+
+#### Syntax
+\`NOTICE(sysgui,nfyid,ERR=lineref)\`
+
+#### Description
+The NOTICE() function uses the passed Notify ID and retrieves the Notice string from the SYSGUI channel.The following example shows the basic structure of an event loop in a Visual PRO/5 program, including details on how to interpret arbitrary Notify events:
+
+Documentation: https://documentation.basis.cloud/BASISHelp/WebHelp/commands2/notice_function.htm
 @/
-NOTICE(param: sysgui, param: int, ERR?:lineref): string
+NOTICE(sysgui,nfyid,ERR:lineref): any
+
 
 /@@
-\`NOTICETPL(objtype,code{,ERR=lineref})\`
 
-The NOTICETPL() function retrieves the template string definition for the specified Notice code and object for grid, INPUTE, INPUTN, list edit, list button, and tab controls.
-objtype values:
--1:Windows operation system notice event,
-1: top level window.
-2: bordered child window.
-7: borderless child window.
-11: button control.
-12: radio button control.
-13: check box control.
-14: horizontal scroll bar control.
-15: vertical scroll bar control.
-16: edit control.
-17: static text control.
-18: list box control.
-19: list button control.
-20: list edit control
-21: group box control.
-22: custom edit control.
-100: menu item control.
-101: checkable menu item.
-102: status bar control.
-103: tool button control.
-104: INPUTE control.
-105: INPUTN control.
-106: tabl control.
-107: grid control.
+NOTICETPL(objtype,code,ERR=lineref)
 
+
+#### Syntax
+\`NOTICETPL(objtype,code,ERR=lineref)\`
+
+#### Description
+For BBj-specific information, see NOTICETPL() Function - BBj.This example shows the basic structure of an event loop in a Visual PRO/5 program, including details on how to interpret arbitrary Notify events.
+
+Documentation: https://documentation.basis.cloud/BASISHelp/WebHelp/commands2/noticetpl_function.htm
 @/
-NOTICETPL(param: int, param: int, ERR?:lineref): string
+NOTICETPL(objtype,code,ERR:lineref): any
+
 
 /@@
-\`NUM(string{,ERR=lineref})\`
 
-The NUM() function converts a string argument to a numeric equivalent.
+NUM(string,ERR=lineref)
+
+
+#### Syntax
+\`NUM(string,ERR=lineref)\`
+
+#### Description
+For BBj-specific information, see NUM() Function - BBj.
+
+Documentation: https://documentation.basis.cloud/BASISHelp/WebHelp/commands2/num_function.htm
 @/
-NUM(param: string, ERR?:lineref): num
+NUM(string,ERR:lineref): any
+
 
 /@@
-\`PAD(str,len{,padtype{,padchr}}{,ERR=lineref})\`
 
+PAD(str,len,padtype,padchr,ERR=lineref)
+
+
+#### Syntax
+\`PAD(str,len,padtype,padchr,ERR=lineref)\`
+
+#### Description
 The PAD() function pads a specified string.
+
+Documentation: https://documentation.basis.cloud/BASISHelp/WebHelp/commands2/pad_function.htm
 @/
-PAD(param: string, param: int, param: char, param: char, ERR?:lineref): string
+PAD(str,len,padtype,padchr,ERR:lineref): any
+
 
 /@@
-\`PCK(num1,num2{,ERR=lineref})\`
 
-The PCK() function has been added for compatibility with older Business BASICs that support these nonstandard capabilities.
+PCK(num1,num2,ERR=lineref)
+
+
+#### Syntax
+\`PCK(num1,num2,ERR=lineref)\`
+
+#### Description
+The PCK() function (and the counterpart function UPK()) has been added for compatibility with older Business BASICs that support these nonstandard capabilities. In the syntax example above, num1 is any numeric expression, and num2 is an integer from 1 to 6. The string result is num2 bytes long. The packed string may hold two digits per byte; therefore, a 6-byte packed string may hold a 12-digit number (including a sign). If num1 has any fractional digits, they are ignored. If the value is too large for the size of the packed result, excess digits on the left are discarded.
+
+The intent of PCK() and UPK() is to allow compression of numeric values into a pseudo-binary form to save disk space. Because the BIN() and CHR() functions generate bytes that could be mistaken for field terminators (by the READ statement), another method was needed.
+
+PCK() and UPK() are designed so that the packed strings do not contain field terminators. To be consistent with other implementations of PCK()/UPK(), the packed string for negative values will compare greater than a packed string for positive values. Also, a packed string for -2 will compare greater than a packed string for -1, though, numerically, -1 is greater than -2. PRO/5 does not necessarily use the same packed format as other BASICs; therefore, when converting existing data files to PRO/5, packed fields must be unpacked and then repacked under PRO/5.
+
+Documentation: https://documentation.basis.cloud/BASISHelp/WebHelp/commands2/pck_function.htm
 @/
-PCK(param: num, param: num, ERR?:lineref): string
+PCK(num1,num2,ERR:lineref): any
+
 
 /@@
-\`PGM(int{,ERR=lineref})\`
 
-The PGM() function returns the compiled form of a specified line from the current workspace program.
-IF int is:
--1, then workspace program name is returned.
--2, then current program name is returned.
-65535, then variable table for current workspace program is returned.
+PGM(int,ERR=lineref)
+
+
+#### Syntax
+\`PGM(int,ERR=lineref)\`
+
+#### Description
+For BBj-specific information, see the PGM() Function - BBj.
+
+Documentation: https://documentation.basis.cloud/BASISHelp/WebHelp/commands2/pgm_function.htm
 @/
-PGM(param: int, ERR?:lineref): string
+PGM(int,ERR:lineref): any
+
 
 /@@
-\`POS(stringA relation stringB {{,intA},intB})\`
 
+POS(stringA relation stringB ,intA,intB)
+
+
+#### Syntax
+\`POS(stringA relation stringB ,intA,intB)\`
+
+#### Description
 The POS() function scans stringB for a substring with a specific relationship to stringA.
-StringA: String sought, StringB: String to be scanned.
+
+Documentation: https://documentation.basis.cloud/BASISHelp/WebHelp/commands2/pos_function.htm
 @/
-POS(param: boolean, param: int, param: int): int
+POS(expression): any
+
 
 /@@
-\`PROMPT(message{,default{,title{,expr}}}{,MODE="options"}{,TIM=int}{,ERR=lineref})\`
 
-In BBj 22.13 and higher, the PROMPT() function prompts the user to type a value into a dialog box, then returns that string to the application. 
-@/
-PROMPT(param: string, param: string, param: string, param: expression, param: string, param: int, ERR?:lineref): string
+PUB(int,ERR=lineref)
 
-/@@
-\`PUB(int{,ERR=lineref})\`
+
+#### Syntax
+\`PUB(int,ERR=lineref)\`
+
+#### Description
+For BBj-specific information, see the PUB() Function.
 
 The PUB() function returns strings describing the public programs currently in memory.
+
+Documentation: https://documentation.basis.cloud/BASISHelp/WebHelp/commands2/pub_function.htm
 @/
-PUB(param: int, ERR?:lineref): string
+PUB(int,ERR:lineref): any
+
 
 /@@
-\`RESFIRST(res_handle{,ERR=lineref})\`
 
+RESFIRST(res_handle,ERR=lineref)
+
+
+#### Syntax
+\`RESFIRST(res_handle,ERR=lineref)\`
+
+#### Description
 The RESFIRST() function retrieves the resource identifier and creates a string that provides resource ID information.
+
+Documentation: https://documentation.basis.cloud/BASISHelp/WebHelp/commands2/resfirst_function.htm
 @/
-RESFIRST(param: res_handle, ERR?:lineref): string
+RESFIRST(res_handle,ERR:lineref): any
+
 
 /@@
-\`RESGET(handle,group,item{,ERR=lineref})\`
+
+RESGET(handle,group,item,ERR=lineref)
+
+
+#### Syntax
+\`RESGET(handle,group,item,ERR=lineref)\`
+
+#### Description
+For BBj-specific information, see the RESGET() Function - BBj.
 
 RESGET() returns a resource string from a BASIS resource file.
-group:
-1:window
-2:menu
-4:child window
-5:image list
+
+Documentation: https://documentation.basis.cloud/BASISHelp/WebHelp/commands2/resget_function.htm
 @/
-RESGET(param: res_handle, param: int, param: int, ERR?:lineref): string
+RESGET(handle,group,item,ERR:lineref): any
+
 
 /@@
-\`RESINFO(res_handle,resource{,ERR=lineref})\`
 
-The RESINFO() function returns a formatted string containing information about the contents of a resource file.
+RESINFO(res_handle,resource,ERR=lineref)
+
+
+#### Syntax
+\`RESINFO(res_handle,resource,ERR=lineref)\`
+
+#### Description
+For BBj-specific information, see RESINFO() Function - BBj.
+
+Documentation: https://documentation.basis.cloud/BASISHelp/WebHelp/commands2/resinfo_function.htm
 @/
-RESINFOR(param: res_handle, param: string, ERR?:lineref): string
+RESINFO(res_handle,resource,ERR:lineref): any
+
 
 /@@
-\`RESNEXT(res_handle,res_id{,ERR=lineref})\`
 
+RESNEXT(res_handle,res_id,ERR=lineref)
+
+
+#### Syntax
+\`RESNEXT(res_handle,res_id,ERR=lineref)\`
+
+#### Description
 The RESNEXT() function returns a string assigning the next valid resource in the resource file to the template defined by RESFIRST().
+
+Documentation: https://documentation.basis.cloud/BASISHelp/WebHelp/commands2/resnext_function.htm
 @/
-RESNEXT(param: res_handle, param: int, ERR?:lineref): string
+RESNEXT(res_handle,res_id,ERR:lineref): any
+
 
 /@@
-\`RESOPEN(filename{,ERR=lineref})\`
+
+RESOPEN(filename,ERR=lineref)
+
+
+#### Syntax
+\`RESOPEN(filename,ERR=lineref)\`
+
+#### Description
+For BBj-specific information, see the RESOPEN() Function - BBj.
 
 The RESOPEN() function opens a resource file and returns an integer handle.
+
+Documentation: https://documentation.basis.cloud/BASISHelp/WebHelp/commands2/resopen_function.htm
 @/
-RESOPEN(param: string, ERR?:lineref): int
+RESOPEN(filename,ERR:lineref): any
+
 
 /@@
-\`RND(int{,ERR=lineref})\`
 
-The RND() function returns a sequence of random numbers. 
-The sequence of values returned is determined by a "seed value." 
-The same sequence results each time a given seed is used.
+RND(int,ERR=lineref)
+
+
+#### Syntax
+\`RND(int,ERR=lineref)\`
+
+#### Description
+The RND() function returns a sequence of random numbers. The sequence of values returned is determined by a "seed value." The same sequence results each time a given seed is used.
+
+Documentation: https://documentation.basis.cloud/BASISHelp/WebHelp/commands2/rnd_function.htm
 @/
-RND(param: int, ERR?:lineref): int
+RND(int,ERR:lineref): any
+
 
 /@@
-\`ROUND(expr{,int}{,ERR=lineref})\`
 
+ROUND(expr,int,ERR=lineref)
+
+
+#### Syntax
+\`ROUND(expr,int,ERR=lineref)\`
+
+#### Description
 The ROUND() function rounds a number to a specified number of decimal places or to the current precision value.
+
+Documentation: https://documentation.basis.cloud/BASISHelp/WebHelp/commands2/round_function.htm
 @/
-ROUND(param: int, ERR?:lineref): int
+ROUND(expr,int,ERR:lineref): any
+
 
 /@@
-\`SCALL(string{,ERR=lineref})\`
 
-The SCALL() function is used in run mode to execute operating system commands in the PRO/5 environment.
+SCALL(string,ERR=lineref)
+
+
+#### Syntax
+\`SCALL(string,ERR=lineref)\`
+
+#### Description
+For BBj-specific information, see SCALL() Function - BBj.
+
+Documentation: https://documentation.basis.cloud/BASISHelp/WebHelp/commands2/scall_function.htm
 @/
-SCALL(param: string, ERR?:lineref): void
+SCALL(string,ERR:lineref): any
+
 
 /@@
-\`SENDMSG(sysgui,id,function,int,string{,context{,ERR=lineref}})\`
 
+SENDMSG(sysgui,id,function,int,string,context,ERR=lineref)
+
+
+#### Syntax
+\`SENDMSG(sysgui,id,function,int,string,context,ERR=lineref)\`
+
+#### Description
 The SENDMSG() function sends messages to windows and controls. The meaning of the returned string depends on the type of object the id parameter refers to and the message being sent.
+
+While the SENDMSG() functions contained in this section apply to windows and child windows, there are SENDMSG()functions that apply specifically to grid , INPUTE, INPUTN, and tab controls, as well as those that apply specifically to setting international keyboards. The following identifies the parameters common to all SENDMSG() functions:
+
+Documentation: https://documentation.basis.cloud/BASISHelp/WebHelp/commands2/sendmsg_function.htm
 @/
-SENDMSG(param: sysgui, param: int, param: int, param: int, param: string, param: int, ERR?:lineref): string
+SENDMSG(sysgui,id,function,int,string,context,ERR:lineref): any
+
 
 /@@
-\`SERVERENV(str{,IND=int}{,ERR=lineref})\`
 
-In BBj 4.0 and higher, the SERVERENV() function returns the value of the specified operating system's environment variable from the server side of a thin client session.
+SEVAL(str,ERR=lineref)
+
+
+#### Syntax
+\`SEVAL(str,ERR=lineref)\`
+
+#### Description
+The SEVAL() function is intended to replace the use of EXECUTE for evaluating string expressions in public programs. SEVAL() returns the value from the string expression in str after compiling and executing the str. Error branches in str are not taken in the event of an error while evaluating the expression.
+
+Documentation: https://documentation.basis.cloud/BASISHelp/WebHelp/commands2/seval_function.htm
 @/
-SERVERENV(param: string, param: int, ERR?:lineref): string
+SEVAL(str,ERR:lineref): any
+
 
 /@@
-\`SEVAL(str{,ERR=lineref})\`
 
-The SEVAL() function is intended to replace the use of EXECUTE for evaluating string expressions in public programs. 
-SEVAL() returns the value from the string expression in str after compiling and executing the str. 
-@/
-SEVAL(param: string, ERR?:lineref): string
+SGN(num,ERR=lineref)
 
-/@@
-\`SGN(num{,ERR=lineref})\`
 
+#### Syntax
+\`SGN(num,ERR=lineref)\`
+
+#### Description
 The SGN() function returns a 1, 0, or -1 depending on whether its numeric argument is positive, zero, or negative respectively.
+
+Documentation: https://documentation.basis.cloud/BASISHelp/WebHelp/commands2/sgn_function.htm
 @/
-SNG(param: int, ERR?:lineref): int
+SGN(num,ERR:lineref): any
+
 
 /@@
-\`SIN(num{,precis}{,ERR=lineref})\`
 
+SIN(num,precis,ERR=lineref)
+
+
+#### Syntax
+\`SIN(num,precis,ERR=lineref)\`
+
+#### Description
 The SIN() function returns the sine of an argument.
+
+Documentation: https://documentation.basis.cloud/BASISHelp/WebHelp/commands2/sin_function.htm
 @/
-SIN(param: num, ERR?:lineref): num
+SIN(num,precis,ERR:lineref): any
+
 
 /@@
-\`SQLERR(sqlchan{,ERR=lineref})\`
 
-The SQLERR() function returns the text for the most recent error returned by the SQL command being executed.
+SQLERR(sqlchan,ERR=lineref)
+
+
+#### Syntax
+\`SQLERR(sqlchan,ERR=lineref)\`
+
+#### Description
+The SQLERR() function returns the text for the most recent error returned by the SQL command being executed. This text is not normally generated by PRO/5 and may not be compatible with different SQL databases.
+
+If an SQLOPEN fails, use SQLERR(0) to return the error code of the failed open.
+
+Documentation: https://documentation.basis.cloud/BASISHelp/WebHelp/commands2/sqlerr_function.htm
 @/
-SQLERR(param: sqlchannel, ERR?:lineref): void
+SQLERR(sqlchan,ERR:lineref): any
+
 
 /@@
-\`SQLFETCH(sqlchan{,IND=1}{,END=lineref}{,ERR=lineref})\`
 
-The SQLFETCH() function returns the next element in the result set from the execution of the SQL command on sqlchan.
+SQLFETCH(sqlchan,IND=1,END=lineref,ERR=lineref)
+
+
+#### Syntax
+\`SQLFETCH(sqlchan,IND=1,END=lineref,ERR=lineref)\`
+
+#### Description
+The SQLFETCH() function returns the next element in the result set from the execution of the SQL command on sqlchan. If no results remain, an !ERROR=2 is returned. Other errors require using SQLERR to diagnose.
+
+Use the optional IND=1 parameter to return the number of records modified by an update or delete.
+
+Documentation: https://documentation.basis.cloud/BASISHelp/WebHelp/commands2/sqlfetch_function.htm
 @/
-SQLFETCH(param: sqlchannel, param: int, END?:lineref, ERR?:lineref): any
+SQLFETCH(sqlchan,IND,END:lineref,ERR:lineref): any
+
 
 /@@
-\`SQLLIST(arg{,ERR=lineref})\`
 
-The SQLLIST() function returns the names of the available databases in the SQL system, with each item terminated by a linefeed.
+SQLLIST(arg,ERR=lineref)
+
+
+#### Syntax
+\`SQLLIST(arg,ERR=lineref)\`
+
+#### Description
+For BBj-specific information, see SQLTMPL() Function - BBj.
+
+Documentation: https://documentation.basis.cloud/BASISHelp/WebHelp/commands2/sqllist_function.htm
 @/
-SQLLIST(param: arg, ERR?:lineref): string
+SQLLIST(arg,ERR:lineref): any
+
 
 /@@
-\`SQLTABLES(sqlchan{,ERR=lineref})\`
 
+SQLTABLES(sqlchan,ERR=lineref)
+
+
+#### Syntax
+\`SQLTABLES(sqlchan,ERR=lineref)\`
+
+#### Description
 The SQLTABLES() function retrieves a list of available tables from a database with each item terminated by a linefeed.
+
+Documentation: https://documentation.basis.cloud/BASISHelp/WebHelp/commands2/sqltables_function.htm
 @/
-SQLTABLES(param: sqlchannel, ERR?:lineref): string
+SQLTABLES(sqlchan,ERR:lineref): any
+
 
 /@@
-\`SQLTMPL(sqlchan{,IND=1}{,ERR=lineref})\`
 
-The SQLTMPL() function returns the template used to access the data returned in an SQLFETCH() operation. 
-The template returned is dependent on the SQL command given by the SQLPREP verb.
+SQLTMPL(sqlchan,IND=1,ERR=lineref)
+
+
+#### Syntax
+\`SQLTMPL(sqlchan,IND=1,ERR=lineref)\`
+
+#### Description
+For BBj-specific information, see the SQLTMPL() Function - BBj.
+
+The SQLTMPL() function returns the template used to access the data returned in an SQLFETCH() operation. The template returned is dependent on the SQL command given by the SQLPREP verb. Therefore, the template returned may vary if different tables are accessed with the SQLPREP verb.
+
+The optional IND=1 parameter returns the number of rows that have been modified with the SQL DELETE or UPDATE command and should not be used with queries.
+
+Documentation: https://documentation.basis.cloud/BASISHelp/WebHelp/commands2/sqltmpl_function.htm
 @/
-SQLTMPL(param: sqlchannel, param: int, ERR?:lineref): template
+SQLTMPL(sqlchan,IND,ERR:lineref): any
+
 
 /@@
-\`SQR(num{,ERR=lineref})\`
 
+SQR(num,ERR=lineref)
+
+
+#### Syntax
+\`SQR(num,ERR=lineref)\`
+
+#### Description
 The SQR() function returns the square root of its numeric argument. The argument may be any positive number.
+
+Documentation: https://documentation.basis.cloud/BASISHelp/WebHelp/commands2/sqr_function.htm
 @/
-SQL(param: num, ERR?:lineref): num
+SQR(num,ERR:lineref): any
+
 
 /@@
-\`SSORT(str1,int1{,str2,int2}{,ERR=lineref})\`
 
-The SSORT() function sorts str1 using int1 as the record size and optionally using the key described using str2 and int2 as a key descriptor pair. 
+SSORT(str1,int1,str2,int2,ERR=lineref)
+
+
+#### Syntax
+\`SSORT(str1,int1,str2,int2,ERR=lineref)\`
+
+#### Description
+The SSORT() function sorts str1 using int1 as the record size and optionally using the key described using str2 and int2 as a key descriptor pair. The key descriptor has the length of the key to sort. See the KGEN() function for additional information. The string returned by this function is str1, sorted.
+
+Documentation: https://documentation.basis.cloud/BASISHelp/WebHelp/commands2/ssort_function.htm
 @/
-SSORT(param: string, param: int, param: string, param: int, ERR?:lineref): void
+SSORT(str1,int1,str2,int2,ERR:lineref): any
+
 
 /@@
-\`
-SSZ(string{,ERR=lineref})
-SSZ(int{,ERR=lineref})
-\`
 
+SSZ(string,ERR=lineref)
+
+
+#### Syntax
+\`SSZ(string,ERR=lineref)\`
+
+#### Description
 The SSZ() function returns the constant 512 and is included only for syntax compatibility with older versions of Business BASIC. string or int must refer to a valid disk drive.
-@/
-SSZ(param: string, ERR?:linefeed): int
-SSZ(param: int, ERR?:linefeed): int
 
-/@@
-\`STBL(str1{,str2}{,ERR=lineref})\`
-
-The STBL() function allows the program to maintain strings that are independent of the workspace and cannot be destroyed by CLEAR, BEGIN, or START. 
+Documentation: https://documentation.basis.cloud/BASISHelp/WebHelp/commands2/ssz_function.htm
 @/
-STBL(param: string, param: string, ERR?:lineref): void
+SSZ(string,ERR:lineref): any
 
 
 /@@
-\`SWAP(str1{,str2}{,ERR=lineref})\`
 
-The SWAP() function is used for exchanging data with other software applications that may be using a native mode of data representation on a particular machine.
+STBL(str1,str2,ERR=lineref)
+
+
+#### Syntax
+\`STBL(str1,str2,ERR=lineref)\`
+
+#### Description
+The STBL() function allows the program to maintain strings that are independent of the workspace and cannot be destroyed by CLEAR, BEGIN, or START. However, these strings are not shared between tasks. The STBL() function is used to maintain these global strings. There are two forms of the STBL() function:
+
+Documentation: https://documentation.basis.cloud/BASISHelp/WebHelp/commands2/stbl_function.htm
 @/
-SWAP(param: string, param: string, ERR?:lineref): void
+STBL(str1,str2,ERR:lineref): any
+
 
 /@@
-\`
-TBL(string,string{,ERR=lineref})
-TBL(string,TBL=lineref{,ERR=lineref})
-\`
 
-The TBL() function performs the string translation described in the TABLE verb. The first argument is the string to translate. 
-The second argument, which specifies the translation table, may be either another string or a TBL=lineref reference. 
-If the table is in a string, the string must be at least one byte long. If TBL= is used, it must refer to a TABLE statement.
+STR(num:mask,ERR=lineref)
+
+
+#### Syntax
+\`STR(num:mask,ERR=lineref)\`
+
+#### Description
+For BBj-specific information, see STR() Function - BBj.
+
+The first STR() function above returns an ASCII string representing the value of its numeric argument. The result can be formatted using the optional string mask. See Numeric Output for more information.
+
+The NUM() function is complementary to the STR() function when the STR() function is used without a mask that places nonnumeric characters in the result.
+
+In the second syntax example above, the STR() function returns its string argument applied to the specified mask. The specified positions in the mask are filled with successive characters from string. The following characters in mask are replaced by characters from string:
+
+Documentation: https://documentation.basis.cloud/BASISHelp/WebHelp/commands2/str_function.htm
 @/
-TBL(param: string, table: string, ERR?:lineref): void
-TBL(param: string, TBL?:lineref, ERR?:lineref): void
+STR(num:mask,ERR:lineref): any
+
 
 /@@
-\`TCB(int{,ERR=lineref})\`
+
+SWAP(str1,str2,ERR=lineref)
+
+
+#### Syntax
+\`SWAP(str1,str2,ERR=lineref)\`
+
+#### Description
+The SWAP() function is used for exchanging data with other software applications that may be using a native mode of data representation on a particular machine. It rearranges the bytes in str1 according to specific rules and returns the string result. The rules are provided by individual bits in the optional str2, or by default if str2 is not given. str2 must be one byte long. The lower three bits determine the kind of swapping to take place.
+
+Documentation: https://documentation.basis.cloud/BASISHelp/WebHelp/commands2/swap_function.htm
+@/
+SWAP(str1,str2,ERR:lineref): any
+
+
+/@@
+
+TBL(string,string,ERR=lineref)
+
+
+#### Syntax
+\`TBL(string,string,ERR=lineref)\`
+
+#### Description
+The TBL() function performs the string translation described in the TABLE verb. The first argument is the string to translate. The second argument, which specifies the translation table, may be either another string or a TBL=lineref reference. If the table is in a string, the string must be at least one byte long. If TBL= is used, it must refer to a TABLE statement.
+
+Documentation: https://documentation.basis.cloud/BASISHelp/WebHelp/commands2/tbl_function.htm
+@/
+TBL(string,string,ERR:lineref): any
+
+
+/@@
+
+TCB(int,ERR=lineref)
+
+
+#### Syntax
+\`TCB(int,ERR=lineref)\`
+
+#### Description
+For BBj-specific information, see the TCB() Function - BBj.
 
 The TCB() function returns information on the current state of the application.
+
+Documentation: https://documentation.basis.cloud/BASISHelp/WebHelp/commands2/tcb_function.htm
 @/
-TCB(param: int, ERR?:lineref): string
+TCB(int,ERR:lineref): any
+
 
 /@@
-\`TOPEN(level{,MODE="READONLY"){,ERR=lineref})\`
 
-The TOPEN() function starts a transaction and returns an integer transaction ID.
+SQLTMPL(sqlchan,IND=1,ERR=lineref)
+
+
+#### Syntax
+\`SQLTMPL(sqlchan,IND=1,ERR=lineref)\`
+
+#### Description
+For BBj-specific information, see the SQLTMPL() Function - BBj.
+
+The SQLTMPL() function returns the template used to access the data returned in an SQLFETCH() operation. The template returned is dependent on the SQL command given by the SQLPREP verb. Therefore, the template returned may vary if different tables are accessed with the SQLPREP verb.
+
+The optional IND=1 parameter returns the number of rows that have been modified with the SQL DELETE or UPDATE command and should not be used with queries.
+
+Documentation: https://documentation.basis.cloud/BASISHelp/WebHelp/commands2/sqltmpl_function.htm
 @/
-TOPEN(param: int, mode: string, ERR?:lineref): int
+SQLTMPL(sqlchan,IND,ERR:lineref): any
+
 
 /@@
-\`TSK(int{,ERR=lineref})\`
 
-The TSK() function returns strings corresponding to the ALIAS entries in the current PRO/5 configuration. 
-TSK(0) returns the first ALIAS, TSK(1) the second, and so on.
+TSK(int,ERR=lineref)
+
+
+#### Syntax
+\`TSK(int,ERR=lineref)\`
+
+#### Description
+For BBj-specific information, see TSK() Function - BBj.
+
+Documentation: https://documentation.basis.cloud/BASISHelp/WebHelp/commands2/tsk_function.htm
 @/
-TSK(param: int, ERR?:lineref): string
+TSK(int,ERR:lineref): any
+
 
 /@@
-\`UPK(str{,ERR=lineref})\`
 
-The UPK() function returns a numeric result from the packed data in str. It is assumed that str was created by the PCK() function.
+UPK(str,ERR=lineref)
+
+
+#### Syntax
+\`UPK(str,ERR=lineref)\`
+
+#### Description
+The UPK() function returns a numeric result from the packed data in str. It is assumed that str was created by the PCK() function. See the PCK() function for additional information.
+
+Documentation: https://documentation.basis.cloud/BASISHelp/WebHelp/commands2/upk_function.htm
 @/
-UPK(param: string, ERR?:lineref): num
+UPK(str,ERR:lineref): any
+
 
 /@@
-\`WINFIRST(sysgui{,ERR=lineref})\`
 
-The WINFIRST() function returns a window context ID that can be used by the WININFO() function to obtain information about the referenced window.
+WINFIRST(sysgui,ERR=lineref)
+
+
+#### Syntax
+\`WINFIRST(sysgui,ERR=lineref)\`
+
+#### Description
+The WINFIRST() function returns a window context ID that can be used by the WININFO() function to obtain information about the referenced window. To query the current window context for a given SYSGUI channel, use either the CTRL() function or the FIN() function.
+
+Documentation: https://documentation.basis.cloud/BASISHelp/WebHelp/commands2/winfirst_function.htm
 @/
-WINFIRST(param: sysgui, ERR?:lineref): int
+WINFIRST(sysgui,ERR:lineref): any
+
 
 /@@
-\`WININFO(sysgui,contextid{,ERR=lineref}{,END=lineref})\`
 
+WININFO(sysgui,contextid,ERR=lineref,END=lineref)
+
+
+#### Syntax
+\`WININFO(sysgui,contextid,ERR=lineref,END=lineref)\`
+
+#### Description
 The WININFO() function returns a string that contains information about the contents of a SYSGUI window.
+
+Documentation: https://documentation.basis.cloud/BASISHelp/WebHelp/commands2/wininfo_function.htm
 @/
-WININFOR(param: sysgui, ERR?:lineref): string
+WININFO(sysgui,contextid,ERR:lineref,END:lineref): any
+
 
 /@@
-\`WINNEXT(sysgui,context{,ERR=lineref})\`
 
-The WINNEXT() function returns the next context ID of each of the top-level windows in sequence by way of a templated 
-string obtained either from the WINFIRST() function or from a previous use of the WINNEXT() function.
+WINNEXT(sysgui,context,ERR=lineref)
+
+
+#### Syntax
+\`WINNEXT(sysgui,context,ERR=lineref)\`
+
+#### Description
+The WINNEXT() function returns the next context ID of each of the top-level windows in sequence by way of a templated string obtained either from the WINFIRST() function or from a previous use of the WINNEXT() function.
+
+Documentation: https://documentation.basis.cloud/BASISHelp/WebHelp/commands2/winnext_function.htm
 @/
-WINNEXT(param: sysgui, param: int, ERR?:lineref): int
+WINNEXT(sysgui,context,ERR:lineref): any
+
 
 /@@
-\`XFID(channelno{,ERR=lineref})\`
 
-The XFID() function returns a string describing the attributes of the file currently OPENed on channelno. 
-If channelno was OPENed with an alias and resulted in opening a BBj device, XFID() returns only the alias name.
-@/
-XFID(param: int, ERR?:lineref): string
+XKGEN(str1,str2,int,ERR=lineref)
 
-/@@
-\`XFIN(channelno{,ERR=lineref})\`
 
-The XFIN() function returns an 8-byte file length.
-@/
-XFIN(param: int, ERR?:lineref): double
+#### Syntax
+\`XKGEN(str1,str2,int,ERR=lineref)\`
 
-/@@
-\`XKGEN(str1,str2,int{,ERR=lineref})\`
-
+#### Description
 In BBj 3.0 and higher, the XKGEN() function derives the value of a key contained within a record.
+
+Documentation: https://documentation.basis.cloud/BASISHelp/WebHelp/commands2/xkgen_function.htm
 @/
-XKGEN(param: string, param: string, ERR?:lineref): string
+XKGEN(str1,str2,int,ERR:lineref): any
+
 
 /@@
-\`XOR(stringA,stringB{,ERR=lineref})\`
 
-The XOR() function will exclusive OR the bits of the two string arguments and return the result.
+XOR(stringA,stringB,ERR=lineref)
+
+
+#### Syntax
+\`XOR(stringA,stringB,ERR=lineref)\`
+
+#### Description
+The XOR() function will exclusive OR the bits of the two string arguments and return the result. The two strings must be the same length. The rules for XOR() are:LET Z$=XOR($94$,$AC$)
+
+Documentation: https://documentation.basis.cloud/BASISHelp/WebHelp/commands2/xor_function.htm
 @/
-XOR(param: string, param: string, ERR?:lineref): int
+XOR(stringA,stringB,ERR:lineref): any
+
 
 /@@
-\`XSSORT(str1,int1{,str2,int2}{,ERR=lineref})\`
 
-In BBj 3.0 and higher, the XSSORT() function sorts str1 using int1 as the record size and 
-optionally using the key described using str2 and int2 as a key descriptor pair. 
-The key descriptor has the length of the key to sort. The string returned by this function is str1, sorted.
+XSSORT(str1,int1,str2,int2,ERR=lineref)
+
+
+#### Syntax
+\`XSSORT(str1,int1,str2,int2,ERR=lineref)\`
+
+#### Description
+In BBj 3.0 and higher, the XSSORT() function sorts str1 using int1 as the record size and optionally using the key described using str2 and int2 as a key descriptor pair. The key descriptor has the length of the key to sort. The string returned by this function is str1, sorted.
+
+See XKGEN() Function for additional information.
+
+Documentation: https://documentation.basis.cloud/BASISHelp/WebHelp/commands2/xssort_function.htm
 @/
-XSSORT(param: string, param: int, param: string, param: string, ERR?:lineref): void
+XSSORT(str1,int1,str2,int2,ERR:lineref): any
+
+

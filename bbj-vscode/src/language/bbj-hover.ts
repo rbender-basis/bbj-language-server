@@ -71,7 +71,7 @@ export class BBjHoverProvider extends AstNodeHoverProvider {
     }
 
     protected createMarkdownHover(header: string | undefined, content: string | undefined = ''): Hover {
-        const headerText = header ? `__${header}__\n\n` : ''
+        const headerText = header ? `${header}\n\n` : ''
         return {
             contents: {
                 kind: 'markdown',
