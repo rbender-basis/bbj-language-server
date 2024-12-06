@@ -30,7 +30,7 @@ while read -r filename; do
     echo -e "#### Description"
     hxextract P /dev/shm/diff | sed -E 's/<(\/)?p>//g' | sed -E 's/<(\/)?br>//g' | sed -E 's/<(\/)?font>//g' | sed 's/<font style="font-style: italic;">//g'
     echo -e "\n"
-    echo Documentation: https://documentation.basis.cloud/BASISHelp/WebHelp$(echo $filename | sed 's/doc//')
+    echo Documentation: https://documentation.basis.cloud/BASISHelp/WebHelp/commands$(echo $filename | sed 's/doc\/commands[0-9]//')
     echo "@/"
     echo "$(cat /dev/shm/syntax |  sed 's/=/:/g' | sed 's/\[//g' | sed 's/\]//g' | sed 's/\$//g' | sed -E 's/(,)?\.//g' \
         | sed -E 's/:[0-9]//g' ): any" && echo -e "\n"
