@@ -19,7 +19,6 @@ while read -r filename; do
         echo $filename >> /dev/shm/skipped.txt
         continue
     fi
-    ((count++))
     echo -e "sed '/Documentation: BBj$fnkName/d' | \\" >> /dev/shm/toSwap.txt
     echo -e "/@@""\n"
     length=$(echo $(cat $filename | hxselect h2 + p.Code -s "\n" | head -n1 | tee /dev/shm/tmp | wc -m)-1 | bc)
