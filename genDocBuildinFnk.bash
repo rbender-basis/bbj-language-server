@@ -2,10 +2,16 @@
 # depends on html-xml-utils, sed, grep, cut
 
 rm /dev/shm/skipped.txt 2>/dev/null
+rm /dev/shm/toSwap.txt 2>/dev/null
+rm /dev/shm/out.bbl 2>/dev/null
+fnkName=""
 
-echo -e "\n""library""\n"
+echo -e "\n""library""\n" >> /dev/shm/out.bbl
 while read -r filename; do
+    #echo $filename >> /dev/shm/files.txt
     if [[ $filename =~ "_bbj" ]]; then
+        tmp=$(echo $filename | sed 's/doc\/commands[0-9]//' | sed 's/\//\\\//g')
+        echo -e "sed 's/Documentation: BBj$fnkName/Documentation: https:\/\/documentation.basis.cloud\/BASISHelp\/WebHelp\/commands$tmp/' | \\" >> /dev/shm/toSwap.txt
         echo $filename >> /dev/shm/skipped.txt
         continue
     fi
@@ -13,6 +19,8 @@ while read -r filename; do
         echo $filename >> /dev/shm/skipped.txt
         continue
     fi
+    ((count++))
+    echo -e "sed 's/Documentation: BBj$fnkName//' | \\" >> /dev/shm/toSwap.txt
     echo -e "/@@""\n"
     length=$(echo $(cat $filename | hxselect h2 + p.Code -s "\n" | head -n1 | tee /dev/shm/tmp | wc -m)-1 | bc)
     if [[ "$length" < "1" ]]; then
@@ -31,6 +39,8 @@ while read -r filename; do
     hxextract P /dev/shm/diff | sed -E 's/<(\/)?p>//g' | sed -E 's/<(\/)?br>//g' | sed -E 's/<(\/)?font>//g' | sed 's/<font style="font-style: italic;">//g'
     echo -e "\n"
     echo Documentation: https://documentation.basis.cloud/BASISHelp/WebHelp/commands$(echo $filename | sed 's/doc\/commands[0-9]//')
+    fnkName=$(echo $filename | cut -d"_" -f 1 | basename $(tee))
+    echo Documentation: BBj$fnkName
     echo "@/"
     echo "$(cat /dev/shm/syntax |  sed 's/=/:/g' | sed 's/\[//g' | sed 's/\]//g' | sed 's/\$//g' | sed -E 's/(,)?\.//g' \
         | sed -E 's/:[0-9]//g' ): any" && echo -e "\n"
@@ -43,8 +53,14 @@ done<<<$(
             echo "doc/"$(echo $line | grep -Eo 'commands[0-9]*/[a-z]*_function(_bbj)?.htm')
         fi
     done<<<$(
-        cat doc/commands/alphabetical_functions.htm | hxselect a | hxnormalize | grep -Eo 'href="(../commands[0-9]*/)?[a-z]*_function(_bbj)?.htm"' | cut -d"=" -f 2
+        cat doc/commands/alphabetical_functions.htm | hxselect a | hxnormalize | grep -Eo 'href="(../commands[0-9]*/)?[a-z]*_function(_bbj)?.htm"' | cut -d"=" -f 2 | sort
     )
-)
+) >> /dev/shm/out.bbl
 
-rm /dev/shm/syntax /dev/shm/full.tmp /dev/shm/code.tmp /dev/shm/diff
+echo "cat -" >> /dev/shm/toSwap.txt
+cat /dev/shm/toSwap.txt | tail -n+2 > /dev/shm/tmp
+mv /dev/shm/tmp /dev/shm/toSwap.txt
+
+cat /dev/shm/out.bbl | bash /dev/shm/toSwap.txt
+
+rm /dev/shm/syntax /dev/shm/full.tmp /dev/shm/code.tmp /dev/shm/diff /dev/shm/tmp /dev/shm/toSwap.txt /dev/shm/out.bbl >/dev/null 2>/dev/null
