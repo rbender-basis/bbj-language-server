@@ -5,6 +5,19 @@ library
 
 /@@
 
+!(expr)
+
+#### Syntax
+\`\!(expr)\`
+#### Description
+The !() function inverts the logical meaning of the enclosed numeric expression.
+
+Documentation: https://documentation.basis.cloud/BASISHelp/WebHelp/commands/_function.htm
+@/
+!(expr): any
+
+/@@
+
 NULL()
 
 
