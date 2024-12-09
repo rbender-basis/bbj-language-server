@@ -11,7 +11,7 @@ while read -r filename; do
     #echo $filename >> /dev/shm/files.txt
     if [[ $filename =~ "_bbj" ]]; then
         tmp=$(echo $filename | sed 's/doc\/commands[0-9]//' | sed 's/\//\\\//g')
-        echo -e "sed 's/Documentation: BBj$fnkName/Documentation: https:\/\/documentation.basis.cloud\/BASISHelp\/WebHelp\/commands$tmp/' | \\" >> /dev/shm/toSwap.txt
+        echo -e "sed 's/Documentation: BBj$fnkName/BBj-specifics: https:\/\/documentation.basis.cloud\/BASISHelp\/WebHelp\/commands$tmp/' | \\" >> /dev/shm/toSwap.txt
         echo $filename >> /dev/shm/skipped.txt
         continue
     fi
@@ -20,7 +20,7 @@ while read -r filename; do
         continue
     fi
     ((count++))
-    echo -e "sed 's/Documentation: BBj$fnkName//' | \\" >> /dev/shm/toSwap.txt
+    echo -e "sed '/Documentation: BBj$fnkName/d' | \\" >> /dev/shm/toSwap.txt
     echo -e "/@@""\n"
     length=$(echo $(cat $filename | hxselect h2 + p.Code -s "\n" | head -n1 | tee /dev/shm/tmp | wc -m)-1 | bc)
     if [[ "$length" < "1" ]]; then
