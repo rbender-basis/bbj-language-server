@@ -8,9 +8,9 @@ fnkName=""
 
 echo -e "\n""library""\n" >> /dev/shm/out.bbl
 while read -r filename; do
-    #echo $filename >> /dev/shm/files.txt
+    echo $filename >> /dev/shm/files.txt
     if [[ $filename =~ "_bbj" ]]; then
-        tmp=$(echo $filename | sed 's/doc\/commands[0-9]//' | sed 's/\//\\\//g')
+        tmp=$(echo $filename | sed -E 's/doc\/commands([0-9])?//' | sed 's/\//\\\//g')
         echo -e "sed 's/Documentation: BBj$fnkName/BBj-specifics: https:\/\/documentation.basis.cloud\/BASISHelp\/WebHelp\/commands$tmp/' | \\" >> /dev/shm/toSwap.txt
         echo $filename >> /dev/shm/skipped.txt
         continue
@@ -37,7 +37,7 @@ while read -r filename; do
     echo -e "#### Description"
     hxextract P /dev/shm/diff | sed -E 's/<(\/)?p>//g' | sed -E 's/<(\/)?br>//g' | sed -E 's/<(\/)?font>//g' | sed 's/<font style="font-style: italic;">//g'
     echo -e "\n"
-    echo Documentation: https://documentation.basis.cloud/BASISHelp/WebHelp/commands$(echo $filename | sed 's/doc\/commands[0-9]//')
+    echo Documentation: https://documentation.basis.cloud/BASISHelp/WebHelp/commands$(echo $filename | sed -E 's/doc\/commands([0-9])?//')
     fnkName=$(echo $filename | cut -d"_" -f 1 | basename $(tee))
     echo Documentation: BBj$fnkName
     echo "@/"
